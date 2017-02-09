@@ -16,18 +16,3 @@ bundle install
 
 # package all dependencies for deployment to servers
 bundle package --all
-
-
-(
-  cd ember-frontend
-
-  npm config set cache "${HOME}/cache/npm/"
-  export PATH="${HOME}/cache/npm/bin/:${PATH}"
-  export PREFIX="${HOME}/cache/npm/"
-
-# install ember dependencies
-  npm install
-  npm install -g bower ember-cli
-
-  bower install
-)
