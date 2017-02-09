@@ -28,13 +28,3 @@ bundle exec scss-lint
 echo "Running specs"
 bundle exec rake db:test:prepare
 bundle exec rspec --format doc
-
-(
-  cd ember-frontend
-
-  echo "Running ember tests"
-  ember test
-
-  echo "Packaging Ember app for deploy"
-  npm run build-for-rails
-)

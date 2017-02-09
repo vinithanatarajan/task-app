@@ -32,8 +32,15 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+  gem "pry-byebug"
+  gem "pry-rails"
   gem "rubocop", "~> 0.42.0", require: false
+  gem "scss_lint", require: false
+  gem "rspec-rails"
+  gem "factory_girl_rails"
+  # Use .env file to load a custom environment for this app in development and
+  # test
+  gem "dotenv-rails"
 end
 
 group :development do
