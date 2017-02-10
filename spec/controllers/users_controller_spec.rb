@@ -9,4 +9,11 @@ RSpec.describe UsersController, type: :controller do
       it { expect(response).to be_success }
     end
   end
+
+  context 'Not signed in' do
+    describe 'GET index' do
+      before { get :index }
+      it { expect(response).to redirect_to(user_session_path) }
+    end
+  end
 end

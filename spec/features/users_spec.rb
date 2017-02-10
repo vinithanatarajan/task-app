@@ -10,4 +10,11 @@ RSpec.feature User, type: :feature do
       expect(page).to have_text("Welcome to the teacher portal!")
     end
   end
+
+  context "user not signed in" do
+    it "doesn't sign in the user" do
+      visit "/users/sign_in"
+      expect(page).to have_text("Log in")
+    end
+  end
 end
