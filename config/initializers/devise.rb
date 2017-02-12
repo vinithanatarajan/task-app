@@ -249,6 +249,12 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
+  # ==> Configuration for :invitable
+  # The period the generated invitation token is valid, after
+  # this period, the invited resource won't be able to accept the invitation.
+  # When invite_for is 0 (the default), the invitation won't expire.
+  config.invite_for = 2.days
+
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
