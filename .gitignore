@@ -9,6 +9,7 @@
 
 /.env
 /public/assets
+/db/seeds.rb
 
 # Ignore all logfiles and tempfiles.
 /log/*
