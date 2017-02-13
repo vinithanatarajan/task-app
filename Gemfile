@@ -23,6 +23,7 @@ gem "sdoc", "~> 0.4.0", group: :doc
 
 gem "devise"
 gem "devise_invitable", "~> 1.7.0"
+gem "letter_opener"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
