@@ -1,18 +1,22 @@
 <h2>Students page </h2>
 
-<thead>
+<%= button_to "Add a Student", new_student_path, method: "get"  %><br>
+<table>
   <tr>
     <th> Name </th>
     <th> Class room </th>
     <th> current level </th>
   </tr>
-</thead>
 
-<% @students.each do |student| %>
+  <% @students.each do |student| %>
 
-  <tr>
-    <td><%= student.name %></td>
-    <td><%= student.class_room %></td>
-    <td><%= student.current_level %></td>
-  </tr>
-<% end %>
+    <tr>
+      <td><%= student.name %><br><br></td>
+      <td><%= student.class_room %><br><br></td>
+      <td><%= student.current_level %><br><br></td>
+      <td><%= link_to "Edit", edit_student_path(student) %>  |  <br><br></td>
+      <td><%= link_to "Delete", student_path(student), method: :delete, data: {confirm: "Are you sure"} %><br><br></td>
+    </tr>
+  <% end %>
+
+</table>
