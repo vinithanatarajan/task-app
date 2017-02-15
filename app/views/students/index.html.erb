@@ -14,7 +14,7 @@
       <td><%= student.name %><br><br></td>
       <td><%= student.class_room %><br><br></td>
       <td><%= student.current_level %><br><br></td>
-      <td><%= link_to "Edit", edit_student_path(student) %>  |  <br><br></td>
+      <td><%= link_to "Edit", edit_student_path(student) %> |  <br><br></td>
       <td><%= link_to "Delete", student_path(student), method: :delete, data: {confirm: "Are you sure"} %><br><br></td>
     </tr>
   <% end %>
