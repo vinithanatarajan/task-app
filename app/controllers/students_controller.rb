@@ -12,38 +12,33 @@ class StudentsController < ApplicationController
   end
 
   def edit
+    # binding.pry
     @student = Student.find(params[:id])
   end
 
   def create
-    @student = Student.new(student_params)
+    @student = Student.create(student_params)
 
-    respond_to do |format|
-      if @student.save
-        format.html { redirect_to @student, notice: "Student was sucessfully added." }
-        format.json { render :show, status: :created, location: @student }
-      else
-        format.html { render :new }
-        format.json { render json @student.errors, status: :unprocessable_entity }
-      end
+    if @student.save
+      redirect_to @student, notice: "Student was sucessfully added."
+    else
+      render action: "new"
     end
   end
 
   def update
     @student = Student.find(params[:id])
     if @student.update(student_params)
-      format.html { redirect_to students_url, notice: "Student was sucessfully updated" }
+      redirect_to students_path, notice: "Student was sucessfully updated"
     else
-      format.html { render action: "edit" }
+      render action: "edit"
     end
   end
 
   def destroy
-    @student = student.find(params[:id])
+    @student = Student.find(params[:id])
     @student.destroy
-    respond_to do |format|
-      format.html { redirect_to students_url }
-    end
+    redirect_to students_path
   end
 
   private
