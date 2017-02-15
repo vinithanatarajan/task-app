@@ -1,0 +1,17 @@
+<%= form_for @student do |f| %>
+  <div>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %><br>
+  </div>
+  <div>
+    <%= f.label :class_room %><br>
+    <%= f.text_field :class_room %><br>
+  </div>
+  <div>
+    <%= f.label :current_level %><br>
+    <%= f.text_field :current_level %><br>
+  </div>
+  <div>
+    <%= f.submit "Save" %>
+  </div>
+<% end %>
