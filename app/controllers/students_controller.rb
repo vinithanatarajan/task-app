@@ -1,5 +1,8 @@
 class StudentsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
+    # authorize :user
     @students = Student.all
   end
 
