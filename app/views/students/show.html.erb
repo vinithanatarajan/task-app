@@ -1,0 +1,31 @@
+<table>
+  <tr>
+    <th> Name </th>
+    <th> Class room </th>
+    <th> current level </th>
+  </tr>
+
+  <tr>
+    <td><%= @student.name %><br><br></td>
+    <td><%= @student.class_room %><br><br></td>
+    <td><%= @student.current_level %><br><br></td>
+    <td><%= link_to "Edit", edit_student_path(@student) %>  |  <br><br></td>
+    <td><%= link_to "Delete", url_for(action: :destroy, id: @student.id), method: :delete, data: {confirm: "Are you sure"} %><br><br></td>
+  </tr>
+</table>
+
+
+
+
+
+<%
+=begin %>
+<%= @student.name %>
+<%= @student.class_room %>
+<%= @student.current_level %>
+
+<%= link_to "Edit", edit_student_path(@student) %><br><br>
+<%= link_to "Delete", url_for(action: :destroy, id: @student.id), method: :delete, data: {confirm: "Are you sure"} %><br><br>
+<%
+=end %>
+<%= button_to "Back", students_path, method: :get%>

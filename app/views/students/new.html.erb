@@ -1,0 +1,7 @@
+<h2>Add new student</h2>
+
+<%= form_for @student, url: {action: "create"}, html: {method: :post} do |f| %>
+  <%= render partial: "form" %>
+<% end %><br><br>
+
+<%= link_to 'cancel', students_path %>
