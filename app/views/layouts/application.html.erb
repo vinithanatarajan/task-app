@@ -17,15 +17,6 @@
   <%= link_to "Login", new_user_session_path %>
 <% end %>
 <%
-=begin %>
-<% if notice %>
-  <p class="alert alert-success"><%= notice %></p>
-<% end %>
-<%
-=end %>
-<% if alert %>
-  <p class="alert alert-danger"><%= alert %></p>
-<% end %>
 
 <div>
   <% flash.each do |message_type, message| %>
