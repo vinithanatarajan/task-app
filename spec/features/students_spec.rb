@@ -2,11 +2,16 @@ require "rails_helper"
 
 RSpec.feature User, type: :feature do
   let!(:student) { FactoryGirl.create :student }
+  let!(:user) { FactoryGirl.create :user }
 
-  context "can see list of student" do
-    it "shows the list" do
-      # binding.pry
+  describe "can see list of student" do
+    before do
+      sign_in user
+      visit "/"
+      click_on "Students"
       visit "/students"
+    end
+    it "shows the list" do
       expect(page).to have_text("Students page")
       expect(page).to have_text(student.name)
       expect(page).to have_text(student.class_room)
@@ -16,6 +21,9 @@ RSpec.feature User, type: :feature do
 
   describe "I can add student" do
     before do
+      sign_in user
+      visit "/"
+      click_on "Students"
       visit "/students"
       click_on "Add a Student"
       fill_in "Name", with: "Peter"
@@ -33,6 +41,9 @@ RSpec.feature User, type: :feature do
 
   describe "I can edit the student details" do
     before do
+      sign_in user
+      visit "/"
+      click_on "Students"
       visit "/students"
       click_on "Edit"
       fill_in "Name", with: "Molly"

@@ -6,7 +6,7 @@ RSpec.describe UsersController, type: :controller do
     before { sign_in user }
     describe "GET #index" do
       before { get :index }
-      it { expect(response).to be_success }
+      it { expect(response).to redirect_to(root_path) }
     end
   end
 
