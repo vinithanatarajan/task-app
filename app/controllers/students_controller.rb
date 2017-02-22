@@ -1,4 +1,6 @@
 class StudentsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @students = Student.all
   end
@@ -12,7 +14,6 @@ class StudentsController < ApplicationController
   end
 
   def edit
-    # binding.pry
     @student = Student.find(params[:id])
   end
 
