@@ -1,7 +1,6 @@
 require "rails_helper"
 
 RSpec.feature Student, type: :feature do
-
   describe "when I visit students page" do
     let!(:student) { FactoryGirl.create :student }
     let!(:user) { FactoryGirl.create :user }
@@ -53,19 +52,19 @@ RSpec.feature Student, type: :feature do
       end
     end
 
-  # Commenting the below lines because it fails with Selenium webdriver
+    # Commenting the below lines because it fails with Selenium webdriver
 
-  # context "I can delete the student" do
-  #   before do
-  #     visit "/students"
-  #     click_on "Delete"
-  #     # page.driver.browser.switch_to.alert.accept
-  #     # page.accept_confirm { click_button "OK" }
-  #   end
+    # context "I can delete the student" do
+    #   before do
+    #     visit "/students"
+    #     click_on "Delete"
+    #     # page.driver.browser.switch_to.alert.accept
+    #     # page.accept_confirm { click_button "OK" }
+    #   end
 
-  #   it "I no longer have student on the page" do
-  #     expect(page).to change { Student.count }.by(-1)
-  #   end
-  # end
+    #   it "I no longer have student on the page" do
+    #     expect(page).to change { Student.count }.by(-1)
+    #   end
+    # end
   end
 end
