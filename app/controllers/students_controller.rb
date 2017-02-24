@@ -1,5 +1,6 @@
 class StudentsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :authorize_user
+
 
   def index
     @students = Student.all
@@ -43,6 +44,10 @@ class StudentsController < ApplicationController
   end
 
   private
+
+  def authorize_user
+    redirect_to root_path if current_user.admin?
+  end
 
   def student_params
     params[:student].permit(:name, :class_room, :current_level)
