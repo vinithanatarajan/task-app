@@ -1,7 +1,10 @@
 class StudentsController < ApplicationController
-  before_action :authenticate_user!, :authorize_user
+  before_action :authenticate_user!
 
   def index
+    # user can view students if user created that student
+    # if admin can see students
+
     @students = Student.all
   end
 
@@ -10,14 +13,17 @@ class StudentsController < ApplicationController
   end
 
   def new
+    authorize_user!
     @student = Student.new
   end
 
   def edit
+    authorize_user!
     @student = Student.find(params[:id])
   end
 
   def create
+    authorize_user!
     @student = Student.create(student_params)
 
     if @student.save
@@ -37,6 +43,7 @@ class StudentsController < ApplicationController
   end
 
   def destroy
+    authorize_user!
     @student = Student.find(params[:id])
     @student.destroy
     redirect_to students_path
@@ -44,8 +51,8 @@ class StudentsController < ApplicationController
 
   private
 
-  def authorize_user
-    redirect_to root_path if current_user.admin?
+  def authorize_user!
+    raise Pundit::NotAuthorizedError if current_user.admin?
   end
 
   def student_params
