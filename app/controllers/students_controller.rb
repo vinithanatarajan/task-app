@@ -2,10 +2,7 @@ class StudentsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    # user can view students if user created that student
-    # if admin can see students
-
-    @students = Student.all
+    @students = current_user.students.all
   end
 
   def show
@@ -24,7 +21,8 @@ class StudentsController < ApplicationController
 
   def create
     authorize_user!
-    @student = Student.create(student_params)
+    @student = Student.new(student_params)
+    @student.user = current_user
 
     if @student.save
       redirect_to @student, notice: "Student was sucessfully added."
