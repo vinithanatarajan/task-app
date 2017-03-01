@@ -6,7 +6,7 @@ class StudentsController < ApplicationController
   end
 
   def show
-    @student = Student.find(params[:id])
+    @student = current_user.students.find(params[:id])
   end
 
   def new
@@ -16,7 +16,7 @@ class StudentsController < ApplicationController
 
   def edit
     authorize_user!
-    @student = Student.find(params[:id])
+    @student = current_user.students.find(params[:id])
   end
 
   def create
@@ -32,7 +32,7 @@ class StudentsController < ApplicationController
   end
 
   def update
-    @student = Student.find(params[:id])
+    @student = current_user.students.find(params[:id])
     if @student.update(student_params)
       redirect_to students_path, notice: "Student was sucessfully updated"
     else
@@ -42,7 +42,7 @@ class StudentsController < ApplicationController
 
   def destroy
     authorize_user!
-    @student = Student.find(params[:id])
+    @student = current_user.students.find(params[:id])
     @student.destroy
     redirect_to students_path
   end
