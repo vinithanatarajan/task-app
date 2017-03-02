@@ -5,10 +5,6 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  # def identify_student
-  #   @students = current_user.students
-  # end
-
   protected
 
   def configure_permitted_parameters
