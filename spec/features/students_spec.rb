@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature Student, type: :feature do
   describe "when I visit students page" do
-    let!(:student) { FactoryGirl.create :student }
+    let!(:student) { FactoryGirl.create(:student, user: user) }
     let!(:user) { FactoryGirl.create :user }
 
     before(:each) do
@@ -39,7 +39,7 @@ RSpec.feature Student, type: :feature do
     context "I can edit the student details" do
       before do
         click_on "Edit"
-        fill_in "Name", with: "Molly"
+        fill_in "Name", with: "Molly", visible: false
         fill_in "Class room", with: "Year 8"
         fill_in "Current level", with: "At Expected level"
         click_on "Save"
@@ -51,20 +51,5 @@ RSpec.feature Student, type: :feature do
         expect(page).to have_content("At Expected level")
       end
     end
-
-    # Commenting the below lines because it fails with Selenium webdriver
-
-    # context "I can delete the student" do
-    #   before do
-    #     visit "/students"
-    #     click_on "Delete"
-    #     # page.driver.browser.switch_to.alert.accept
-    #     # page.accept_confirm { click_button "OK" }
-    #   end
-
-    #   it "I no longer have student on the page" do
-    #     expect(page).to change { Student.count }.by(-1)
-    #   end
-    # end
   end
 end

@@ -1,16 +1,25 @@
 <%= form_for @student do |f| %>
+
+  <div class= "error-message">
+    <% if @student.errors.any? %>
+        <% @student.errors.full_messages.each do |msg| %>
+          <%= msg %>
+        <% end %>
+    <% end %>
+  </div><br>
+
   <div>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %><br>
-  </div>
+    <%= f.label :name, prompt: true %><br>
+    <%= f.text_field :name %>
+  </div><br>
   <div>
     <%= f.label :class_room %><br>
-    <%= f.text_field :class_room %><br>
-  </div>
+    <%= f.text_field :class_room %>
+  </div><br>
   <div>
     <%= f.label :current_level %><br>
-    <%= f.text_field :current_level %><br>
-  </div>
+    <%= f.text_field :current_level %>
+  </div><br>
   <div>
     <%= f.submit "Save" %>
   </div>

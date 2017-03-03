@@ -22,7 +22,7 @@ Metrics/ParameterLists:
   Max: 6
 
 Style/SignalException:
-  EnforcedStyle: semantic
+  EnforcedStyle: only_raise
 
 Style/MultilineArrayBraceLayout:
   Enabled: false

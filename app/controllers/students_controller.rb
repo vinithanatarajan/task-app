@@ -2,23 +2,27 @@ class StudentsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @students = Student.all
+    @students = current_user.students.all
   end
 
   def show
-    @student = Student.find(params[:id])
+    @student = current_user.students.find(params[:id])
   end
 
   def new
+    authorize_user!
     @student = Student.new
   end
 
   def edit
-    @student = Student.find(params[:id])
+    authorize_user!
+    @student = current_user.students.find(params[:id])
   end
 
   def create
-    @student = Student.create(student_params)
+    authorize_user!
+    @student = Student.new(student_params)
+    @student.user = current_user
 
     if @student.save
       redirect_to @student, notice: "Student was sucessfully added."
@@ -28,7 +32,7 @@ class StudentsController < ApplicationController
   end
 
   def update
-    @student = Student.find(params[:id])
+    @student = current_user.students.find(params[:id])
     if @student.update(student_params)
       redirect_to students_path, notice: "Student was sucessfully updated"
     else
@@ -37,12 +41,17 @@ class StudentsController < ApplicationController
   end
 
   def destroy
-    @student = Student.find(params[:id])
+    authorize_user!
+    @student = current_user.students.find(params[:id])
     @student.destroy
     redirect_to students_path
   end
 
   private
+
+  def authorize_user!
+    raise Pundit::NotAuthorizedError if current_user.admin?
+  end
 
   def student_params
     params[:student].permit(:name, :class_room, :current_level)
