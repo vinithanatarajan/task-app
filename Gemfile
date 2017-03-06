@@ -25,6 +25,9 @@ gem "devise"
 gem "devise_invitable", "~> 1.7.0"
 gem "pundit"
 gem "letter_opener"
+gem "foundation-rails", "~> 6.2.4.0"
+gem "font-awesome-sass", "~> 4.7.0"
+gem "foundation-icons-sass-rails"
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
